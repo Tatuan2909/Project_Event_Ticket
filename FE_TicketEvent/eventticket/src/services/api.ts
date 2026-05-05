@@ -2,9 +2,8 @@ import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
 // API configuration
-// IIS Express HTTPS port
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://localhost:44368/api';
-const ATTENDEE_API_BASE_URL = import.meta.env.VITE_ATTENDEE_API_URL || 'https://localhost:44310/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://localhost:7255/api';
+const ATTENDEE_API_BASE_URL = import.meta.env.VITE_ATTENDEE_API_URL || 'https://localhost:7057/api';
 
 export const API_ENDPOINTS = {
   LOGIN: `${API_BASE_URL}/Auth/login`,
@@ -100,7 +99,7 @@ attendeeApi.interceptors.response.use(
 // ============================================
 // ORGANIZER API INSTANCE
 // ============================================
-const ORGANIZER_API_BASE_URL = import.meta.env.VITE_ORGANIZER_API_URL || 'https://localhost:44343/api';
+const ORGANIZER_API_BASE_URL = import.meta.env.VITE_ORGANIZER_API_URL || 'https://localhost:7126/api';
 
 export const organizerApi: AxiosInstance = axios.create({
   baseURL: ORGANIZER_API_BASE_URL,
@@ -139,7 +138,7 @@ organizerApi.interceptors.response.use(
 // ============================================
 // ADMIN API INSTANCE
 // ============================================
-const ADMIN_API_BASE_URL = import.meta.env.VITE_ADMIN_API_URL || 'https://localhost:44311/api';
+const ADMIN_API_BASE_URL = import.meta.env.VITE_ADMIN_API_URL || 'https://localhost:7250/api';
 
 export const adminApi: AxiosInstance = axios.create({
   baseURL: ADMIN_API_BASE_URL,

@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "TicketEvent.Login\\TicketEvent.Login.csproj",
+        "Action": "Start",
+        "Profile": "https"
+      },
+      {
+        "Path": "TicketEvent.Admin\\TicketEvent.Admin.csproj",
+        "Action": "Start",
+        "Profile": "https"
+      },
+      {
+        "Path": "TicketEvent.Attendee\\TicketEvent.Attendee.csproj",
+        "Action": "Start",
+        "Profile": "https"
+      },
+      {
+        "Path": "TicketEvent.Organizer\\TicketEvent.Organizer.csproj",
+        "Action": "Start",
+        "Profile": "https"
+      },
+      {
+        "Path": "TicketEvent.Gateway\\TicketEvent.Gateway.csproj",
+        "Action": "Start",
+        "Profile": "https"
+      }
+    ]
+  }
+]

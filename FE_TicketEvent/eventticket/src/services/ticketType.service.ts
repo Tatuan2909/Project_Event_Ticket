@@ -53,9 +53,22 @@ export const ticketTypeService = {
 
   // Lấy loại vé theo sự kiện (dùng cho trang chi tiết sự kiện)
   getByEventId: async (suKienId: number, chiBanDang?: boolean): Promise<{ success: boolean; suKienId: number; count: number; data: TicketType[] }> => {
-    const params = chiBanDang ? `?chiBanDang=true` : '';
-    const response = await attendeeApi.get(`/LoaiVe/sukien/${suKienId}${params}`);
-    return response.data;
+    try {
+      const params = chiBanDang ? `?chiBanDang=true` : '';
+      const response = await attendeeApi.get<{ success: boolean; suKienId: number; count: number; data: TicketType[] }>(
+        `/LoaiVe/sukien/${suKienId}${params}`
+      );
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching ticket types for event ${suKienId}:`, error);
+      // Trả về empty response nếu lỗi
+      return {
+        success: false,
+        suKienId,
+        count: 0,
+        data: []
+      };
+    }
   },
 
   // Kiểm tra tồn kho và trạng thái mở bán

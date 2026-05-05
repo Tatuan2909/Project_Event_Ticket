@@ -1,17 +1,10 @@
 import type { LoginRequest, RegisterRequest, LoginResponse } from '../types/auth.types';
 import api from './api';
 
-const LOGIN_API_URL = import.meta.env.VITE_API_URL || 'https://localhost:44368/api';
-
 class AuthService {
   async login(credentials: LoginRequest): Promise<LoginResponse> {
     try {
-      console.log('Calling login API:', `${LOGIN_API_URL}/Auth/login`);
-      console.log('Credentials:', credentials);
-
-      const response = await api.post<LoginResponse>(`${LOGIN_API_URL}/Auth/login`, credentials);
-
-      console.log('Login success:', response.data);
+      const response = await api.post<LoginResponse>('/Auth/login', credentials);
       this.setTokens(response.data.accessToken, response.data.refreshToken);
       return response.data;
     } catch (error: any) {
@@ -23,12 +16,7 @@ class AuthService {
 
   async register(userData: RegisterRequest): Promise<void> {
     try {
-      console.log('Calling register API:', `${LOGIN_API_URL}/Auth/register`);
-      console.log('User data:', userData);
-
-      await api.post(`${LOGIN_API_URL}/Auth/register`, userData);
-
-      console.log('Register success');
+      await api.post('/Auth/register', userData);
     } catch (error: any) {
       console.error('Register error:', error);
       const message = error.response?.data?.message || error.message || 'Đăng ký thất bại';
